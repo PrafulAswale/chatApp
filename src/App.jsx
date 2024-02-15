@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Room from "./pages/Room";
 
 function App() {
@@ -7,7 +6,6 @@ function App() {
 
   return (
     <>
-      <h1> Chat app using ReactJs and NodeJs</h1>
       <Room />
     </>
   );
