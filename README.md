@@ -1,7 +1,7 @@
 # Real Time Chat App With React JS, Node Js and Appwrite
 
 A chat app with real-time capabilities that utilizes Appwrite on the backend. 
-* [Chat App](https://chitchatreact18.netlify.app/login).
+* [Chat App](https://chitchatreact18.netlify.app/).
 
 <img src="./images/Register.png"/>
 <img src="./images/Login.png"/>
