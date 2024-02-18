@@ -6,11 +6,11 @@ import { LogOut, LogIn } from "react-feather";
 const Header = () => {
   const { user, handleLogout } = useAuth();
   return (
-    <div id="header--wrapper">
+    <div id="header--wrapper" className="text-white">
       {user ? (
         <>
           Welcome {user.name}
-          <LogOut className="header--link" onClick={handleLogout} />
+          <LogOut className="" onClick={handleLogout} />
         </>
       ) : (
         <>
