@@ -2,13 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { useAuth } from "../utils/AuthContext";
 import { Link } from "react-router-dom";
+import { Lock } from "react-feather";
 
 const RegisterPage = () => {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
-    password1: "",
-    password2: "",
+    password: "",
+    comfirmpassword: "",
   });
 
   const { handleRegister } = useAuth();
@@ -18,84 +19,111 @@ const RegisterPage = () => {
     let value = e.target.value;
 
     setCredentials({ ...credentials, [name]: value });
-    console.log("CREDS:", credentials);
+    //console.log("CREDS:", credentials);
   };
 
   return (
-    <div className="auth--container">
-      <div className="form--wrapper">
+    <div className="flex justify-center items-center flex-col h-screen w-screen bg-slate-900">
+      <h1 className="inline-flex items-center text-2xl mb-4 flex-col text-white">
+        <Lock className="h-8 w-8 mb-2" /> Register
+      </h1>
+      <div className="w-full max-w-xl">
         <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={(e) => {
             handleRegister(e, credentials);
           }}
         >
-          <div className="field--wrapper">
-            <label>Name:</label>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
             <input
-              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
               type="text"
               name="name"
+              placeholder="Enter your Name..."
               value={credentials.name}
-              placeholder="Enter your name..."
               onChange={(e) => {
                 handleInputChange(e);
               }}
             />
           </div>
-
-          <div className="field--wrapper">
-            <label>Email:</label>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
             <input
-              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
               type="email"
               name="email"
-              placeholder="Enter your email..."
+              placeholder="Enter your email"
               value={credentials.email}
               onChange={(e) => {
                 handleInputChange(e);
               }}
             />
           </div>
-
-          <div className="field--wrapper">
-            <label>Password:</label>
+          <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
+              Password
+            </label>
             <input
-              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
               type="password"
-              name="password1"
-              placeholder="Enter a password..."
-              value={credentials.password1}
+              name="password"
+              placeholder="Enter a password"
+              value={credentials.password}
               onChange={(e) => {
                 handleInputChange(e);
               }}
             />
           </div>
-
-          <div className="field--wrapper">
-            <label>Confirm password:</label>
+          <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="comfirmPassword"
+            >
+              Comfirm Password
+            </label>
             <input
-              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="comfirmPassword"
               type="password"
-              name="password2"
+              name="comfirmpassword"
               placeholder="Comfirm your password..."
-              value={credentials.password2}
+              value={credentials.comfirmpassword}
               onChange={(e) => {
                 handleInputChange(e);
               }}
             />
           </div>
-
-          <div className="field--wrapper">
-            <input
-              className="btn btn--lg btn--main"
+          <div className="flex items-center justify-between ">
+            <button
+              className=" w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
-              value="Register"
-            />
+            >
+              Register
+            </button>
           </div>
         </form>
-
-        <p>
-          Already have an account? Login <Link to="/login">here</Link>
+        <p className="text-center text-gray-500 text-xl">
+          Already have an account? Login{" "}
+          <Link className="text-white underline" to="/login">
+            here
+          </Link>
         </p>
       </div>
     </div>
