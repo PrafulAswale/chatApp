@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import { account } from "../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { ID } from "appwrite";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -34,14 +35,17 @@ export const AuthProvider = ({ children }) => {
       );
       let accountDetails = await account.get();
       setUser(accountDetails);
+      toast.success("Login Successfull");
       navigate("/");
     } catch (error) {
+      toast.error(`${error}`);
       console.error("error in handleUserLogin::", error);
     }
   };
 
   const handleLogout = async () => {
     const response = await account.deleteSession("current");
+    toast.success("Logout Successfull");
     setUser(null);
   };
 
@@ -49,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     e.preventDefault();
 
     if (credentials.password !== credentials.comfirmpassword) {
-      alert("Passwords did not match");
+      toast.error("Passwords did not match");
       return;
     }
 
@@ -65,8 +69,10 @@ export const AuthProvider = ({ children }) => {
       await account.createEmailSession(credentials.email, credentials.password);
       let accountDetails = await account.get();
       setUser(accountDetails);
+      toast.success("Registration Successfull");
       navigate("/");
     } catch (error) {
+      toast.error("user with the same email already exists");
       console.error(error);
     }
   };

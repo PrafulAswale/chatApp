@@ -57,9 +57,6 @@ const Room = () => {
 
   const getAllUsers = async () => {
     //
-    const promise = await account.listIdentities();
-
-    console.log(promise);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
