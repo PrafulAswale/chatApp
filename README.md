@@ -1,8 +1,43 @@
-# React + Vite
+# Real Time Chat App With React JS, Node Js and Appwrite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A chat app with real-time capabilities that utilizes Appwrite on the backend. 
 
-Currently, two official plugins are available:
+<img src="./images/Register.png"/>
+<img src="./images/Login.png"/>
+<img src="./images/Room.png"/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Getting Started
+Clone the Git Repo
+After cloning the repo ensure you complete the necessary installations
+
+```
+$ npm install
+$ npm run dev
+```
+
+Create a new `.env` file and paste all values in that file with respected IDs;
+
+```js
+//.env
+...
+VITE_APPWRITE_URL="https://YOUR_ENDPOINT"
+VITE_APPWRITE_PROJECT_ID="PROJECT_ID"
+VITE_APPWRITE_DATABASE_ID="DATABASE_ID"
+VITE_APPWRITE_COLLECTION_ID="COLLECTION_ID"     
+...
+```
+
+**Setting Up Appwrite Account**
+
+Set up a local instance of Appwrite or create an account with Appwrite Cloud.
+
+In your appwrite console create a project and database.
+
+1. Create a collection called "messages" and add the following attributes:
+    - user_id
+    - username
+    - body
+2. From your `messages` collection, go to the "settings" --> "Update Permissions" --> "+ Add Role" and select "Users". Give this user type "Create", "Read", "Update" and "Delete" permissions.
+
+Once you've set up your project you should be able to update all necessary env variables. 
+Run your development server to view the output.
