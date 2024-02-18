@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   const handleRegister = async (e, credentials) => {
     e.preventDefault();
 
-    if (credentials.password1 !== credentials.password2) {
+    if (credentials.password !== credentials.comfirmpassword) {
       alert("Passwords did not match");
       return;
     }
@@ -57,15 +57,12 @@ export const AuthProvider = ({ children }) => {
       let response = await account.create(
         ID.unique(),
         credentials.email,
-        credentials.password1,
+        credentials.password,
         credentials.name
       );
-      console.log("User registered!", response);
+      //console.log("User registered!", response);
 
-      await account.createEmailSession(
-        credentials.email,
-        credentials.password1
-      );
+      await account.createEmailSession(credentials.email, credentials.password);
       let accountDetails = await account.get();
       setUser(accountDetails);
       navigate("/");
